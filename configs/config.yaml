@@ -1,0 +1,59 @@
+base:
+  api_url: "https://stg-app.bosta.co/api/v2"
+  business_url: "https://stg-business.bosta.co"
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 1
+security:
+  max_payload_size: 10000
+  injection_timeout: 5
+  rate_limit_requests: 100
+  rate_limit_window: 60
+endpoints:
+  pickup:
+    path: "/pickups"
+    method: "POST"
+    auth_required: true
+    rate_limit: 10
+  bank_info:
+    path: "/businesses/add-bank-info"
+    method: "POST"
+    auth_required: true
+    otp_required: true
+    rate_limit: 5
+  forget_password:
+    path: "/users/forget-password"
+    method: "POST"
+    auth_required: false
+    rate_limit: 10
+  token_generation:
+    path: "/users/generate-token-for-interview-task"
+    method: "POST"
+    auth_required: false
+test_data:
+  valid_business_location_id: "MFqXsoFhxO"
+  valid_contact_person_id: "_sCFBrHGi"
+  valid_email: "amira.mosa+991@bosta.co"
+  valid_phone: "+201055592829"
+headers:
+  common:
+    "accept": "application/json, text/plain, */*"
+    "accept-language": "en"
+    "content-type": "application/json"
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  security_headers:
+    "sec-ch-ua": '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+    "sec-ch-ua-mobile": "?0"
+    "sec-ch-ua-platform": '"Windows"'
+    "sec-fetch-dest": "empty"
+    "sec-fetch-mode": "cors"
+    "sec-fetch-site": "same-site"
+ai_testing:
+  enabled: true
+  model: "gpt-4"
+  max_tokens: 2000
+  temperature: 0.7
+  prompt_templates:
+    vulnerability_detection: "Analyze this API response for potential security vulnerabilities"
+    payload_generation: "Generate malicious payloads for testing this API endpoint"
+    risk_assessment: "Assess the security risk level of this vulnerability"

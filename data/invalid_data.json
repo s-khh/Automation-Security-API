@@ -1,0 +1,87 @@
+{
+  "sql_injection": [
+    "' OR '1'='1",
+    "'; DROP TABLE users; --",
+    "' UNION SELECT * FROM users --",
+    "1' AND (SELECT COUNT(*) FROM users) > 0 --",
+    "'; WAITFOR DELAY '00:00:05' --"
+  ],
+  "xss_payloads": [
+    "<script>alert('XSS')</script>",
+    "<img src=x onerror=alert('XSS')>",
+    "<svg onload=alert('XSS')>",
+    "javascript:alert('XSS')",
+    "';alert('XSS');//"
+  ],
+  "command_injection": [
+    "; ls -la",
+    "| whoami",
+    "&& cat /etc/passwd",
+    "|| id",
+    "; sleep 5"
+  ],
+  "path_traversal": [
+    "../../../etc/passwd",
+    "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts",
+    "%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd",
+    "../../../etc/passwd%00"
+  ],
+  "business_logic": {
+    "negative_values": [-1, -100, -999999],
+    "large_values": [999999999, 2147483647],
+    "special_characters": ["'", "\"", "<", ">", "&", "%", "\\", "/"],
+    "empty_values": ["", null, "null", "undefined"],
+    "boolean_manipulation": [true, false, "true", "false", 1, 0],
+    "array_manipulation": [[], [""], [null], ["admin", "user"]],
+    "object_manipulation": [{}, {"admin": true}, {"role": "admin"}]
+  },
+  "invalid_emails": [
+    "",
+    "invalid",
+    "@domain.com",
+    "user@",
+    "user@domain",
+    "user..name@domain.com",
+    "user@domain..com"
+  ],
+  "invalid_phones": [
+    "",
+    "123",
+    "invalid_phone",
+    "+",
+    "1234567890123456789012345"
+  ],
+  "invalid_dates": [
+    "",
+    "invalid-date",
+    "2025-13-01",
+    "2025-01-32",
+    "1900-01-01",
+    "2200-01-01"
+  ],
+  "idor_payloads": [
+    "../../admin",
+    "../other_user",
+    "1",
+    "999999",
+    "admin",
+    "root",
+    "null",
+    "undefined"
+  ],
+  "jwt_manipulation": {
+    "algorithm_none": "none",
+    "weak_secrets": ["", "secret", "123456", "password"],
+    "modified_claims": {
+      "roles": ["ADMIN", "SUPER_USER", "ROOT"],
+      "businessId": "MODIFIED_BUSINESS_ID",
+      "userId": "admin",
+      "exp": 9999999999
+    }
+  },
+  "rate_limit_test": {
+    "rapid_requests": 100,
+    "concurrent_requests": 50,
+    "burst_requests": 200
+  }
+}

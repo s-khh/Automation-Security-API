@@ -1,0 +1,56 @@
+{
+  "valid_data": {
+    "pickup": {
+      "businessLocationId": "MFqXsoFhxO",
+      "contactPerson": {
+        "_id": "_sCFBrHGi",
+        "name": "test name",
+        "email": "amira.mosa+991@bosta.co",
+        "phone": "+201055592829"
+      },
+      "scheduledDate": "2025-06-30",
+      "numberOfParcels": "3",
+      "hasBigItems": false,
+      "repeatedData": {
+        "repeatedType": "One Time"
+      },
+      "creationSrc": "Web"
+    },
+    "bank_info": {
+      "bankInfo": {
+        "beneficiaryName": "test البنك الأهلي اليوناني - NBG",
+        "bankName": "البنك الأهلي اليوناني - NBG",
+        "ibanNumber": "12345678901EG678901EG",
+        "accountNumber": "123"
+      },
+      "paymentInfoOtp": "123"
+    },
+    "forget_password": {
+      "email": "amira.mosa+991@bosta.co"
+    }
+  },
+  "otp_bypass_tests": {
+    "common_otps": ["000000", "123456", "111111", "000001", "999999", "123123"],
+    "empty_otp": "",
+    "null_otp": null,
+    "invalid_formats": ["abc", "12", "1234567", "!@#$%^"],
+    "sql_injection_otps": ["' OR '1'='1", "123'; DROP TABLE users; --"],
+    "bypass_attempts": [
+      {"paymentInfoOtp": ""},
+      {"paymentInfoOtp": null},
+      {},
+      {"paymentInfoOtp": "000000"},
+      {"paymentInfoOtp": "123456"}
+    ]
+  },
+  "tokens": {
+    "pickup_token": "bca27763f5f30353ba0ee3d2ebd8951994f5016e269bbd781798e2884274d631",
+    "bank_info_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVydmIxOWNKT0E4M044eHY2d0lzUCIsInJvbGVzIjpbIkJVU0lORVNTX0FETUlOIl0sImJ1c2luZXNzQWRtaW5JbmZvIjp7ImJ1c2luZXNzSWQiOiI2U2xuRmpodjVPRWFESWFBZWVjdGciLCJidXNpbmVzc05hbWUiOiJ0ZXN0IGNvbXBhbnkgbmFtZSJ9LCJlbWFpbCI6ImFtaXJhLm1vc2ErOTkxQGJvc3RhLmNvIiwicGhvbmUiOiIrMjAxMDU1NTkyODI5IiwiY291bnRyeSI6eyJfaWQiOiI2MGU0NDgyYzdjYjdkNGJjNDg0OWM0ZDUiLCJuYW1lIjoiRWd5cHQiLCJuYW1lQXIiOiLZhdi12LEiLCJjb2RlIjoiRUcifSwidG9rZW5UeXBlIjoiQUNDRVNTIiwidG9rZW5WZXJzaW9uIjoiVjIiLCJzZXNzaW9uSWQiOiIwMUswWkdRTTJZQkJKQzdOTkQ5UldGVkJUViIsImlhdCI6MTc1MzQwNDgxNCwiZXhwIjoxNzU0NjE0NDE0fQ.b7wIo0ko7JpblvR3h6Kp0fekW1TW4fGxoYPwoOoVTk8",
+    "forget_password_token": "bca27763f5f30353ba0ee3d2ebd8951994f5016e269bbd781798e2884274d631"
+  },
+  "device_info": {
+    "device_id": "01JV70TKSFGV9Z1QWEYV3N5APC",
+    "device_fingerprint": "1hgtilh",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+  }
+}
